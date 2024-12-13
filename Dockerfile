@@ -6,7 +6,6 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-RUN ./manage.py collectstatic
 # Exponha a porta em que o Gunicorn irá rodar
 EXPOSE 8000
 
