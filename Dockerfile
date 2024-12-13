@@ -10,4 +10,4 @@ COPY . .
 EXPOSE 8000
 
 # Comando para iniciar o servidor Gunicorn
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "myapp.wsgi:application"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "historico_fundamentalista.wsgi:application"]
