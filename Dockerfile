@@ -6,6 +6,8 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
+RUN echo "0 8 * * * python /manage.py importar_dados_fundamentus >> /log_importacao" >> /var/spool/cron/crontabs/root
+RUN crond start
 # Exponha a porta em que o Gunicorn irá rodar
 EXPOSE 8000
 
