@@ -22,9 +22,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY', '')
-if not SECRET_KEY:
-    raise Exception('Varíavel de ambiente SECRET_KEY não informada')
+SECRET_KEY = os.getenv('SECRET_KEY', '8-@l=r901)cl@79fr(l7^132e9%l!j9w3&1dt&s(%cn8$7x*h@')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -83,8 +81,8 @@ DB_NAME = os.getenv('DB_NAME', '')
 DB_PASSWORD = os.getenv('DB_PASSWORD', '')
 DB_CLUSTER = os.getenv('DB_CLUSTER', '')
 
-if not all([DB_NAME, DB_CLUSTER, DB_USER, DB_PASSWORD]): 
-    raise Exception("Dados de conexão com o banco não informados")
+# if not all([DB_NAME, DB_CLUSTER, DB_USER, DB_PASSWORD]): 
+#    raise Exception("Dados de conexão com o banco não informados")
 
 DATABASES = {
     'default': {
