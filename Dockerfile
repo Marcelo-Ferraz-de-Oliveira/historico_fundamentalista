@@ -5,6 +5,7 @@ COPY requirements.txt .
 RUN pip install -r requirements.txt
 
 COPY . .
+RUN python manage.py collectstatic
 
 RUN echo "0 8 * * * python /manage.py importar_dados_fundamentus >> /log_importacao" >> /var/spool/cron/crontabs/root
 RUN crond start
