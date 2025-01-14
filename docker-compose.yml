@@ -1,0 +1,25 @@
+networks:
+  traefik-portainer_default:
+    external: true
+services:
+  portainer:
+    image: marceloferrazdeoliveira/historico:latest
+    container_name: historico
+    restart: unless-stopped
+    environment:
+      - DB_PG_NAME
+      - DB_PG_USER
+      - DB_PG_PASSWORD
+      - DB_PG_HOST
+      - DB_PG_PORT
+      - SECRET_KEY
+      - DEBUG
+    networks:
+      - traefik-portainer_default
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.services.historico.loadbalancer.server.port=8000"
+      - "traefik.http.routers.historico.rule=${TRAEFIK_HOST}"
+      - "traefik.http.routers.historico.entrypoints=websecure"
+      - "traefik.http.routers.historico.tls=true"
+      - "traefik.http.routers.historico.tls.certresolver=${TRAEFIK_CERTRESOLVER}"
