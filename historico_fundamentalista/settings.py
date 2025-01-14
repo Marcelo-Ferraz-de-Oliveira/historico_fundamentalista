@@ -81,19 +81,33 @@ DB_NAME = os.getenv('DB_NAME', '')
 DB_PASSWORD = os.getenv('DB_PASSWORD', '')
 DB_CLUSTER = os.getenv('DB_CLUSTER', '')
 
+DB_PG_NAME = os.getenv('DB_PG_NAME', '')
+DB_PG_USER = os.getenv('DB_PG_USER', '')
+DB_PG_PASSWORD = os.getenv('DB_PG_PASSWORD', '')
+DB_PG_HOST = os.getenv('DB_PG_HOST', '')
+DB_PG_PORT = os.getenv('DB_PG_PORT')
+
 # if not all([DB_NAME, DB_CLUSTER, DB_USER, DB_PASSWORD]): 
 #    raise Exception("Dados de conexão com o banco não informados")
 
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': f'{DB_NAME}',
+        'NAME': DB_NAME,
         'CLIENT': {
             'host': f'mongodb+srv://{DB_USER}:{DB_PASSWORD}@{DB_CLUSTER}.mongodb.net/{DB_NAME}',
             'retryWrites': True,
             'w': 'majority'
         }        
-    }
+    },
+    'postgres': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': DB_PG_NAME,
+        'USER': DB_PG_USER,
+        'PASSWORD': DB_PG_PASSWORD,
+        'HOST': DB_PG_HOST,
+        'PORT': DB_PG_PORT,
+    },
 }
 
 

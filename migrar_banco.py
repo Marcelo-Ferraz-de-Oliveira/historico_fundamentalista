@@ -3,11 +3,11 @@ from historico.models import Acao
 
 def migrar_dados():
     # Conectando ao banco antigo e ao novo
-    with connections['default'].cursor() as antigo_cursor, connections['novo'].cursor() as novo_cursor:
+    with connections['default'].cursor() as antigo_cursor, connections['postgres'].cursor() as novo_cursor:
         # Carregar dados do banco antigo
         for acao in Acao.objects.using('default').all():
             # Criar o mesmo registro no novo banco
-            Acao.objects.using('novo').create(
+            Acao.objects.using('postgres').create(
                 papel=acao.papel,
                 cotacao=acao.cotacao,
                 pl=acao.pl,
