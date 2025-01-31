@@ -25,4 +25,4 @@ class PLPVPFilter(admin.SimpleListFilter):
 class AcaoAdmin(admin.ModelAdmin):
     list_display = ('papel', 'cotacao', 'pl', 'pvp', 'div_yield', 'roic', 'roe', 'data')
     search_fields = ('papel',)
-    list_filter = ('data', 'papel', PLPVPFilter)
+    list_filter = ('data', PLPVPFilter)
