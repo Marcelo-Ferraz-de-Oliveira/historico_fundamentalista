@@ -7,18 +7,12 @@ class PLPVPFilter(admin.SimpleListFilter):
 
     def lookups(self, request, model_admin):
         return (
-            ('low', 'PL < 10 e PVP < 1'),
-            ('mid', 'PL 10-20 e PVP 1-2'),
-            ('high', 'PL > 20 e PVP > 2'),
+            ('low', 'PL > 0 e PVP > 0'),
         )
 
     def queryset(self, request, queryset):
         if self.value() == 'low':
-            return queryset.filter(pl__lt=10, pvp__lt=1)
-        if self.value() == 'mid':
-            return queryset.filter(pl__gte=10, pl__lte=20, pvp__gte=1, pvp__lte=2)
-        if self.value() == 'high':
-            return queryset.filter(pl__gt=20, pvp__gt=2)
+            return queryset.filter(pl__gt=0, pvp__gt=0)
         return queryset
 
 @admin.register(Acao)
