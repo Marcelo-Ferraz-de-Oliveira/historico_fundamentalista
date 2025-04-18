@@ -82,7 +82,7 @@ def importar():
     send_mail(
         subject='Importação Concluída com Sucesso',
         message=f'A importação dos dados do Fundamentus foi concluída com sucesso em {pd.Timestamp.now().date()}.',
-        from_email='nao-responda@srv684043.hstgr.cloud',
+        from_email='nao-responda@resend.dev',
         recipient_list=['mfogoiania@gmail.com'],
         fail_silently=False,
     )
