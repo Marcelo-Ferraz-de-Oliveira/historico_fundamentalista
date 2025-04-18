@@ -1,5 +1,6 @@
 import cloudscraper
 import pandas as pd
+from django.core.mail import send_mail
 from historico.models import Acao  # Importando o modelo Django
 
 def importar():
@@ -77,4 +78,12 @@ def importar():
             plpvpa=row['PLPVPA'],
             data=pd.Timestamp.now().date()
         )
+    # Envia um email confirmando a conclusão da importação
+    send_mail(
+        subject='Importação Concluída com Sucesso',
+        message=f'A importação dos dados do Fundamentus foi concluída com sucesso em {pd.Timestamp.now().date()}.',
+        from_email='nao-responda@srv684043.hstgr.cloud',
+        recipient_list=['mfogoiania@gmail.com'],
+        fail_silently=False,
+    )
     return True
